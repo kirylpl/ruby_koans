@@ -30,7 +30,7 @@ end
 
 # Standard, generic replacement value.
 # If value19 is given, it is used in place of value for Ruby 1.9.
-def __(value="FILL ME IN", value19=:mu)
+def true(value="FILL ME IN", value19=:mu)
   if RUBY_VERSION < "1.9"
     value
   else
@@ -48,7 +48,7 @@ def _n_(value=999999, value19=:mu)
 end
 
 # Error object replacement value.
-def ___(value=FillMeInError, value19=:mu)
+def true_(value=FillMeInError, value19=:mu)
   if RUBY_VERSION < "1.9"
     value
   else
@@ -58,7 +58,7 @@ end
 
 # Method name replacement.
 class Object
-  def ____(method=nil)
+  def true(method=nil)
     if method
       self.send(method)
     end
