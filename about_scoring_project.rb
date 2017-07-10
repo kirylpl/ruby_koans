@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 # Greed is a dice game where you roll up to five dice to accumulate
@@ -30,30 +32,34 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
-  result = 0
-  counts = Hash.new(0)
+  sum=0
+  count=Hash.new(0)
 
-  dice.each do |value|
-    counts[value] += 1
+  dice.each do |round|
+    count[round]+=1
   end
-  counts.each do |item, num_found|
-    # 1,1,1 = 1000 points
-    if item == 1 && num_found >= 3 then
-      result += 1000
-      num_found -= 3
+
+  count.each do |value, qnt|
+    triplets = qnt/3
+    remainers = qnt%3
+    # A set of three ones is 1000 points
+    # A one (that is not part of a set of three) is worth 100 points.
+    if value == 1
+      sum+=(1000*triplets)+(100*remainers)
+    # A five (that is not part of a set of three) is worth 50 points.
+    if value == 5 && qnt <3
+      sum+=(50*remainers)
+    # A set of three numbers (other than ones) is worth 100 times the
+    # number. (e.g. three fives is 500 points).
+    if value !=1 && value !=5 && number >=3
+      sum+=(100*value)
     end
-    if item != 1 && num_found >= 3 then
-      result += item * 100
-      num_found -= 3
-    end
-    if item == 1 && num_found <= 2 then 
-      result += 100 * num_found
-    end
-    if item == 5 && num_found <=2 then
-      result += 50 * num_found
-    end
+    # Everything else is worth 0 points.
   end
+
   result
+
+end
 end
 
 class AboutScoringProject < Neo::Koan

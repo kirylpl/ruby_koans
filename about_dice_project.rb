@@ -1,12 +1,12 @@
- require File.expand_path(File.dirname(__FILE__) + '/neo')
+# frozen_string_literal: true
+
+require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class DiceSet
-  def roll(number)
-    @array = Array.new(number) { rand(1..6) }
-  end
+  attr_reader :values
 
-  def values
-    @array
+  def roll(n)
+    @values = Array.new(n) { rand(1..6) }
   end
 end
 

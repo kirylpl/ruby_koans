@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutToStr < Neo::Koan
@@ -22,7 +24,7 @@ class AboutToStr < Neo::Koan
 
   class CanBeTreatedAsString
     def to_s
-      "string-like"
+      'string-like'
     end
 
     def to_str

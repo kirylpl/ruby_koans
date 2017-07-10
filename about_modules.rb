@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutModules < Neo::Koan
@@ -39,7 +41,7 @@ class AboutModules < Neo::Koan
 
   def test_normal_methods_are_available_in_the_object
     fido = Dog.new
-    assert_equal "WOOF", fido.bark
+    assert_equal 'WOOF', fido.bark
   end
 
   def test_module_methods_are_also_available_in_the_object

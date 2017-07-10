@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 C = 'top level'
 
 class AboutConstants < Neo::Koan
-
   C = 'nested'
 
   def test_nested_constants_may_also_be_referenced_with_relative_paths
@@ -84,5 +85,4 @@ class AboutConstants < Neo::Koan
   # QUESTION: Now which has precedence: The constant in the lexical
   # scope, or the constant from the inheritance hierarchy?  Why is it
   # different than the previous answer?
-  
 end

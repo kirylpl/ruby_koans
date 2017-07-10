@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutClasses < Neo::Koan
@@ -60,9 +62,8 @@ class AboutClasses < Neo::Koan
     def set_name(a_name)
       @name = a_name
     end
-    def name
-      @name
-    end
+
+    attr_reader :name
   end
 
   def test_you_can_create_accessor_methods_to_return_instance_variables
@@ -82,7 +83,6 @@ class AboutClasses < Neo::Koan
     end
   end
 
-
   def test_attr_reader_will_automatically_define_an_accessor
     fido = Dog4.new
     fido.set_name('Fido')
@@ -95,7 +95,6 @@ class AboutClasses < Neo::Koan
   class Dog5
     attr_accessor :name
   end
-
 
   def test_attr_accessor_will_automatically_define_both_read_and_write_accessors
     fido = Dog5.new
@@ -179,10 +178,10 @@ class AboutClasses < Neo::Koan
   def test_all_objects_support_to_s_and_inspect
     array = [1, 2, 3]
 
-    assert_equal "[1, 2, 3]", array.to_s
-    assert_equal "[1, 2, 3]", array.inspect
+    assert_equal '[1, 2, 3]', array.to_s
+    assert_equal '[1, 2, 3]', array.inspect
 
     assert_equal 'STRING', 'STRING'.to_s
-    assert_equal "\"STRING\"", 'STRING'.inspect
+    assert_equal '"STRING"', 'STRING'.inspect
   end
 end

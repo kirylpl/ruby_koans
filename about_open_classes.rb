@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutOpenClasses < Neo::Koan
@@ -31,7 +33,7 @@ class AboutOpenClasses < Neo::Koan
 
   class ::Integer
     def even?
-      (self % 2) == 0
+      even?
     end
   end
 
