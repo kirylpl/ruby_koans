@@ -10,7 +10,7 @@ class AboutSandwichCode < Neo::Koan
     count += 1 while file.gets
     count
   ensure
-    file.close if file
+    file&.close
   end
 
   def test_counting_lines
@@ -22,10 +22,10 @@ class AboutSandwichCode < Neo::Koan
   def find_line(file_name)
     file = open(file_name)
     while line = file.gets
-      return line if line.match(/e/)
+      return line if line.match?(/e/)
     end
   ensure
-    file.close if file
+    file&.close
   end
 
   def test_finding_lines
@@ -58,7 +58,7 @@ class AboutSandwichCode < Neo::Koan
     file = open(file_name)
     yield(file)
   ensure
-    file.close if file
+    file&.close
   end
 
   # Now we write:
@@ -66,9 +66,7 @@ class AboutSandwichCode < Neo::Koan
   def count_lines2(file_name)
     file_sandwich(file_name) do |file|
       count = 0
-      while file.gets
-        count += 1
-      end
+      count += 1 while file.gets
       count
     end
   end
@@ -82,7 +80,7 @@ class AboutSandwichCode < Neo::Koan
   def find_line2(file_name)
     file_sandwich(file_name) do |file|
       while line = file.gets
-        return line if line.match(/e/)
+        return line if line.match?(/e/)
       end
     end
   end
@@ -96,9 +94,7 @@ class AboutSandwichCode < Neo::Koan
   def count_lines3(file_name)
     open(file_name) do |file|
       count = 0
-      while file.gets
-        count += 1
-      end
+      count += 1 while file.gets
       count
     end
   end
