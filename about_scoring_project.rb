@@ -40,8 +40,8 @@ def score(dice)
   end
 
   count.each do |value, qnt|
-    triplets = qnt/3
-    remainers = qnt%3
+    triplets = qnt / 3
+    remainers = qnt % 3
     # A set of three ones is 1000 points
     # A one (that is not part of a set of three) is worth 100 points.
     if value == 1
